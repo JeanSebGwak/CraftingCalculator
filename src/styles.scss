@@ -1,4 +1,31 @@
 /* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 1rem;
+  background-color: #121212;
+  color: #e0e0e0;
+  font-family: Roboto, sans-serif;
+
+  color-scheme: light dark;
+  @include mat.theme((
+    color: mat.$violet-palette,
+    typography: Roboto,
+    density: 0
+  ));
+}
+
+/* Table Material plus lisible en sombre */
+.mat-mdc-table {
+  background-color: #1e1e1e;
+}
+
+.mat-mdc-header-row {
+  background-color: #222;
+}
+
+.mat-mdc-row:hover {
+  background-color: #2a2a2a;
+}

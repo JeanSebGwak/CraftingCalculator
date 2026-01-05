@@ -1,5 +1,13 @@
 <div class="container">
-  <h2>Calculateur de qualité</h2>
+  <h2>Calculateur de rareté</h2>
+
+    <mat-card appearance="outlined" class="card">
+  <mat-card-content class="card-content">
+    <div>ATTENTION ! Les calculs effectués sont des approximations et ne peuvent être considéré comme sur à 100%.</div>
+    <div>De plus, il semblerait que les calculs de rareté pour le métier de weaponsmith soit actuellement bugué IG à cause d'un souci d'arrondi, donc méfiance.</div>
+</mat-card-content>
+</mat-card>
+
 
     <mat-form-field>
       <input matInput type="number" #qualityRating placeholder="Quality rating du crafteur" (input)="store.updateQualityRating(qualityRating.valueAsNumber)" />
@@ -11,10 +19,10 @@
     </mat-form-field>
 
     <mat-form-field>
-      <input matInput type="number" #total placeholder="Nombre de composant" />
+      <input matInput type="number" #total placeholder="Nombre total de composant" />
     </mat-form-field>
 
-    <button mat-raised-button color="primary"
+    <button mat-flat-button  color="primary" 
       (click)="add(name.value, total.valueAsNumber)">
       Ajouter
     </button>
@@ -30,7 +38,7 @@
 
   <!-- Common -->
   <ng-container matColumnDef="common">
-    <th mat-header-cell *matHeaderCellDef>Common</th>
+    <th mat-header-cell *matHeaderCellDef class="common">Common</th>
     <td mat-cell *matCellDef="let c">
         <mat-form-field>
       <input matInput type="number"
@@ -42,7 +50,7 @@
 
   <!-- Uncommon -->
   <ng-container matColumnDef="uncommon">
-    <th mat-header-cell *matHeaderCellDef>Uncommon</th>
+    <th mat-header-cell *matHeaderCellDef class="uncommon">Uncommon</th>
     <td mat-cell *matCellDef="let c">
         <mat-form-field>
       <input matInput type="number"
@@ -54,7 +62,7 @@
 
   <!-- Rare -->
   <ng-container matColumnDef="rare">
-    <th mat-header-cell *matHeaderCellDef>Rare</th>
+    <th mat-header-cell *matHeaderCellDef class="rare">Rare</th>
     <td mat-cell *matCellDef="let c">
         <mat-form-field>
       <input matInput type="number"
@@ -66,7 +74,7 @@
 
   <!-- Hero -->
   <ng-container matColumnDef="heroic">
-    <th mat-header-cell *matHeaderCellDef>Hero</th>
+    <th mat-header-cell *matHeaderCellDef class="heroic">Heroic</th>
     <td mat-cell *matCellDef="let c">
         <mat-form-field>
       <input matInput type="number"
@@ -78,7 +86,7 @@
 
   <!-- Epic -->
   <ng-container matColumnDef="epic">
-    <th mat-header-cell *matHeaderCellDef>Epic</th>
+    <th mat-header-cell *matHeaderCellDef class="epic">Epic</th>
     <td mat-cell *matCellDef="let c">
         <mat-form-field>
       <input matInput type="number"
@@ -90,7 +98,7 @@
 
   <!-- Legendary -->
   <ng-container matColumnDef="legendary">
-    <th mat-header-cell *matHeaderCellDef>Legendary</th>
+    <th mat-header-cell *matHeaderCellDef class="legendary">Legendary</th>
     <td mat-cell *matCellDef="let c">
         <mat-form-field>
       <input matInput type="number"
@@ -124,7 +132,30 @@
 </table>
 
   <h3>
-    Qualité finale :
+    Rareté finale :
     {{ store.finalQuality() | number:'1.2-3' }}
-  </h3>
+</h3>
+    <div>Pour rappel :
+    <ul>
+      <li>
+        Entre 0 et 1 : Common
+      </li>
+      <li>
+        Entre 1 et 2 : Uncommon
+      </li>
+      <li>
+        Entre 2 et 3 : Rare
+      </li>
+      <li>
+        Entre 3 et 4 : Heroic
+      </li>
+      <li>
+        Entre 4 et 5 : Epic
+      </li>
+      <li>
+        Entre 5 et 6 : Legendary
+      </li>
+    </ul>
+</div>
+  
 </div>

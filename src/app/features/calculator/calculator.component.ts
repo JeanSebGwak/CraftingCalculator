@@ -7,10 +7,12 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-calculator',
   templateUrl: './calculator.component.html',
+  styleUrls: ['./calculator.component.scss'],
   standalone: true,
   imports: [
     CommonModule,
@@ -18,7 +20,8 @@ import { MatTableModule } from '@angular/material/table';
     MatButtonModule,
     MatSelectModule,
     MatIconModule,
-    MatTableModule
+    MatTableModule,
+    MatCardModule
   ]
 })
 export class CalculatorComponent {

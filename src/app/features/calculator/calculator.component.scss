@@ -1,0 +1,37 @@
+.add-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.common {
+    color: white;
+}
+
+.uncommon {
+    color:green;
+}
+
+.rare {
+color: blue;
+}
+
+.heroic {
+    color: yellow;
+}
+
+.epic {
+    color: purple;
+}
+
+.legendary {
+    color:orange;
+}
+
+.card {
+    margin: 1rem;
+}
+
+.card-content {
+    background-color: #FF5000;
+}
