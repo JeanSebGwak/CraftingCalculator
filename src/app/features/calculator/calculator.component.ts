@@ -28,6 +28,7 @@ export class CalculatorComponent {
   store = inject(CalculatorStore);
 
   displayedColumns = [
+    'totalExceeded',
     'name',
     'common',
     'uncommon',

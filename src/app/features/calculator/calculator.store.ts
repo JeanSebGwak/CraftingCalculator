@@ -25,7 +25,7 @@ export class CalculatorStore {
         rare: 0,
         heroic: 0,
         epic: 0,
-        legendary: 0
+        legendary: 0,
       }
     ]);
   }

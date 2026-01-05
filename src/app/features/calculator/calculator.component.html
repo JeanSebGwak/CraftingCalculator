@@ -30,6 +30,17 @@
 
   <table mat-table [dataSource]="store.components()" [trackBy]="trackById" class="mat-elevation-z2">
 
+  <ng-container matColumnDef="totalExceeded">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td mat-cell *matCellDef="let c">
+      @if (c.common + c.uncommon + c.rare + c.heroic + c.epic + c.legendary > c.total) {
+        <mat-icon aria-hidden="false" class="color-red">close</mat-icon>
+      } @else {
+        <mat-icon aria-hidden="false" class="color-green">check</mat-icon>
+      }
+    </td>
+  </ng-container>
+
   <!-- Nom -->
   <ng-container matColumnDef="name">
     <th mat-header-cell *matHeaderCellDef>Composant</th>
