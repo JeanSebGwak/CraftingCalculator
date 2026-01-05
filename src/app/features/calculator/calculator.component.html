@@ -1,0 +1,130 @@
+<div class="container">
+  <h2>Calculateur de qualité</h2>
+
+    <mat-form-field>
+      <input matInput type="number" #qualityRating placeholder="Quality rating du crafteur" (input)="store.updateQualityRating(qualityRating.valueAsNumber)" />
+    </mat-form-field>
+
+  <div class="add-row">
+    <mat-form-field>
+      <input matInput #name placeholder="Nom du composant" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput type="number" #total placeholder="Nombre de composant" />
+    </mat-form-field>
+
+    <button mat-raised-button color="primary"
+      (click)="add(name.value, total.valueAsNumber)">
+      Ajouter
+    </button>
+  </div>
+
+  <table mat-table [dataSource]="store.components()" [trackBy]="trackById" class="mat-elevation-z2">
+
+  <!-- Nom -->
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef>Composant</th>
+    <td mat-cell *matCellDef="let c">{{ c.name }}</td>
+  </ng-container>
+
+  <!-- Common -->
+  <ng-container matColumnDef="common">
+    <th mat-header-cell *matHeaderCellDef>Common</th>
+    <td mat-cell *matCellDef="let c">
+        <mat-form-field>
+      <input matInput type="number"
+        [value]="c.common"
+        (input)="store.updateValue(c.id, 'common', $any($event.target).valueAsNumber)" />
+        </mat-form-field>
+    </td>
+  </ng-container>
+
+  <!-- Uncommon -->
+  <ng-container matColumnDef="uncommon">
+    <th mat-header-cell *matHeaderCellDef>Uncommon</th>
+    <td mat-cell *matCellDef="let c">
+        <mat-form-field>
+      <input matInput type="number"
+        [value]="c.uncommon"
+        (input)="store.updateValue(c.id, 'uncommon', $any($event.target).valueAsNumber)" />
+        </mat-form-field>
+    </td>
+  </ng-container>
+
+  <!-- Rare -->
+  <ng-container matColumnDef="rare">
+    <th mat-header-cell *matHeaderCellDef>Rare</th>
+    <td mat-cell *matCellDef="let c">
+        <mat-form-field>
+      <input matInput type="number"
+        [value]="c.rare"
+        (input)="store.updateValue(c.id, 'rare', $any($event.target).valueAsNumber)" />
+        </mat-form-field>
+    </td>
+  </ng-container>
+
+  <!-- Hero -->
+  <ng-container matColumnDef="heroic">
+    <th mat-header-cell *matHeaderCellDef>Hero</th>
+    <td mat-cell *matCellDef="let c">
+        <mat-form-field>
+      <input matInput type="number"
+        [value]="c.heroic"
+        (input)="store.updateValue(c.id, 'heroic', $any($event.target).valueAsNumber)" />
+        </mat-form-field>
+    </td>
+  </ng-container>
+
+  <!-- Epic -->
+  <ng-container matColumnDef="epic">
+    <th mat-header-cell *matHeaderCellDef>Epic</th>
+    <td mat-cell *matCellDef="let c">
+        <mat-form-field>
+      <input matInput type="number"
+        [value]="c.epic"
+        (input)="store.updateValue(c.id, 'epic', $any($event.target).valueAsNumber)" />
+        </mat-form-field>
+    </td>
+  </ng-container>
+
+  <!-- Legendary -->
+  <ng-container matColumnDef="legendary">
+    <th mat-header-cell *matHeaderCellDef>Legendary</th>
+    <td mat-cell *matCellDef="let c">
+        <mat-form-field>
+      <input matInput type="number"
+        [value]="c.legendary"
+        (input)="store.updateValue(c.id, 'legendary', $any($event.target).valueAsNumber)" />
+        </mat-form-field>
+    </td>
+  </ng-container>
+
+  <!-- Total -->
+  <ng-container matColumnDef="total">
+    <th mat-header-cell *matHeaderCellDef>Total</th>
+    <td mat-cell *matCellDef="let c">
+        {{ c.total }}
+    </td>
+  </ng-container>
+
+  <!-- Actions -->
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td mat-cell *matCellDef="let c">
+      <button mat-icon-button color="warn"
+        (click)="store.removeComponent(c.id)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>
+
+  <h3>
+    Qualité finale :
+    {{ store.finalQuality() | number:'1.2-3' }}
+  </h3>
+</div>
